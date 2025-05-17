@@ -50,11 +50,18 @@ Floating button on all pages linked to a WhatsApp chat for quick support.
 
 
 **Technologies Used**
+
 **Python** with **Streamlit** for the web app interface.
+
 **MySQL** for relational data storage.
+
 **Google Sheets** for cloud storage via API.
+
 **SMTP** for sending confirmation emails (using Gmail SMTP).
+
 **CSS** embedded for custom UI styling.
+
 **Requests** for HTTP POST to Google Sheets API.
+
 **CSV** file handling for local backups.
 
