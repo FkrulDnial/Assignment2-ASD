@@ -25,7 +25,7 @@ def local_css():
         .stApp {
             background: linear-gradient(135deg, #EEAECA, #94BBE9);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 7s ease infinite;
             color: #000000;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -90,7 +90,8 @@ def local_css():
             background-color: #16a34a !important;  /* Darker green on hover */
             cursor: pointer !important;
         }
-
+        
+        
         /* Header colors */
         h1, h2, h3 {
             color: #000000 !important;
@@ -168,7 +169,7 @@ def is_valid_email(email):
     return re.match(pattern, email)
 
 def is_valid_phone(phone):
-    return phone.isdigit() and len(phone) in [10, 11]
+    return phone.isdigit() and len(phone) in [10,11,12]
 
 # --- Home screen ---
 def home_screen():
@@ -378,3 +379,35 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    # Add the floating WhatsApp help button here so it shows on all pages
+    st.markdown("""
+        <style>
+        .float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;  /* WhatsApp green */
+            color: white;
+            padding: 12px 18px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            z-index: 9999;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+        .float-btn:hover {
+            background-color: #128C7E;
+        }
+        </style>
+        <a href="https://wa.me/60184088256?text=Hello!%20I%20need%20help%20with%20the%20Dean's%20Day%20registration." target="_blank" class="float-btn" rel="noopener noreferrer">
+            📞 WhatsApp Help
+        </a>
+    """, unsafe_allow_html=True)
+    
