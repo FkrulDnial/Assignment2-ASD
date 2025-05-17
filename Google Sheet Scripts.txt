@@ -1,0 +1,48 @@
+function doPost(e) {
+  // Parse the POST request body
+  var params = JSON.parse(e.postData.contents);
+  var ss = SpreadsheetApp.openById('1VGP9bqlbHAe4nuQBSZI61MJumxRu5DOzYmZglQdfoIk'); // Replace with your Sheet ID
+  var sheet = ss.getSheetByName('Sheet1'); // Use your sheet name if different
+
+  // Define the header row
+  var headers = [
+    "Full Name",
+    "Email",
+    "Phone",
+    "Matric",
+    "Faculty",
+    "Year",
+    "Attendance",
+    "Stay",
+    "Bus",
+    "Diet",
+    "Timestamp"
+  ];
+  
+  // Check if the header exists (assume header is in row 1)
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+  }
+
+  // Create new row values in order of header columns
+  var newRow = [
+    params.full_name,
+    params.email,
+    params.phone,
+    params.matric,
+    params.faculty,
+    params.year,
+    params.attendance,
+    params.stay,
+    params.bus,
+    params.diet,
+    params.timestamp
+  ];
+
+  // Append the row
+  sheet.appendRow(newRow);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({result: "success"}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
